@@ -1,35 +1,43 @@
 {
   "name": "gabrielsens-uikit",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "files": [
     "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.mjs",
+  "types": "dist/src/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/src/index.mjs",
+      "default": "./dist/src/index.mjs",
+      "require": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
     },
-    "./styles.css": "./dist/index.css",
+    "./styles.css": "./dist/src/styles/index.css",
     "./utils": {
-      "import": "./dist/utils.mjs",
-      "default": "./dist/utils.mjs",
-      "require": "./dist/utils.js",
-      "types": "./dist/utils.d.ts"
+      "import": "./dist/src/utils.mjs",
+      "default": "./dist/src/utils.mjs",
+      "require": "./dist/src/utils.js",
+      "types": "./dist/src/utils.d.ts"
+    },
+    "./tailwind-preset": {
+      "import": "./dist/tailwind.config.mjs",
+      "default": "./dist/tailwind.config.mjs",
+      "require": "./dist/tailwind.config.js",
+      "types": "./dist/tailwind.config.d.ts"
     }
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build:storybook": "storybook build",
-    "build": "tsup"
+    "build": "tsup",
+    "build:production": "export NODE_ENV=production && yarn build",
+    "build:watch": "tsup --watch"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.0",
@@ -38,9 +46,11 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.427.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "tailwind-merge": "^2.4.0"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.2.8",
