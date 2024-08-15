@@ -21,6 +21,6 @@ jobs:
       - name: Build
         run: yarn build:production
       - name: Build
-        run: npm publish
+        run: npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
